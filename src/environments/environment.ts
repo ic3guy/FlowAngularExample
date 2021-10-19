@@ -7,7 +7,10 @@ export const environment = {
 
   flowAccessNodeAddress: null,
   walletDiscoveryAddress: null,
-  contractProfile: null
+  contractProfile: null,
+  FUNGIBLE_TOKEN_ADDRESS: null,
+  NON_FUNGIBLE_TOKEN_ADDRESS: null,
+  FUSD_TOKEN_ADDRESS: null
 };
 
 /*

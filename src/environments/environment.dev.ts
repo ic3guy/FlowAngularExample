@@ -7,7 +7,10 @@ export const environment = {
 
   flowAccessNodeAddress: 'https://access-testnet.onflow.org',
   walletDiscoveryAddress: 'https://fcl-discovery.onflow.org/testnet/authn',
-  contractProfile: '0xba1132bc08f82fe2'
+  contractProfile: '0xba1132bc08f82fe2',
+  FUNGIBLE_TOKEN_ADDRESS: '0x9a0766d93b6608b7',
+  NON_FUNGIBLE_TOKEN_ADDRESS: '0x631e88ae7f1d7c20',
+  FUSD_TOKEN_ADDRESS: '0xe223d8a629e49c68'
 };
 
 /*

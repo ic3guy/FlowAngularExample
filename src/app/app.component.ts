@@ -4,6 +4,7 @@ import { config } from '@onflow/fcl';
 import * as t from "@onflow/types";
 import { defer, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { FlowService } from './flow.service';
 
 @Component({
   selector: 'app-root',
@@ -13,22 +14,22 @@ import { environment } from 'src/environments/environment';
 export class AppComponent implements OnInit{
   public isInit: Observable<boolean> = new Observable();
 
-  constructor() {}
+  constructor(private flow: FlowService) {}
 
   async ngOnInit(): Promise<void> {
     config()
     .put("accessNode.api", environment.flowAccessNodeAddress)
     .put("challenge.handshake", environment.walletDiscoveryAddress)
     .put("0xProfile", environment.contractProfile)
+    .put("0xFungibleToken", environment.FUNGIBLE_TOKEN_ADDRESS)
+    .put("0xNonFungibleToken", environment.NON_FUNGIBLE_TOKEN_ADDRESS)
+    .put("0xFUSD", environment.FUSD_TOKEN_ADDRESS)
+    .put("0xNFTStorefront", '0xd07a7fa848ee5a9b')
+    .put("0xKittyItems", '0xd07a7fa848ee5a9b')
 
     this.isInitialized('0xba1132bc08f82fe2').then((result: any) => console.log(`The account 0xba1132bc08f82fe2 is initialized: ${result}`));
 
-    //this.isInit = this.isInitializedWrap('0xba1132bc08f82fe2');
-    // this.isInit = this.user.pipe(
-    //   filter(user => !!user.addr),
-    //   switchMap(user => this.isInitializedWrap(user.addr)),
-    //   tap(result => console.log(`the result ${result}`))
-    // )
+    this.flow.kittItems.subscribe(ki => console.log(ki));
   }
     
   async isInitialized(address: string): Promise<boolean> {
