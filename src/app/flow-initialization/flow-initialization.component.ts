@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { tap } from 'rxjs/operators';
 import { FlowService } from '../flow.service';
 
 @Component({
@@ -12,4 +13,7 @@ export class FlowInitializationComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  public initializeAccount(address: string) {
+    this.flow.initializeAccount(address).subscribe();
+  }
 }

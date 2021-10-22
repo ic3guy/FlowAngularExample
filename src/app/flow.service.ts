@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import * as fcl from '@onflow/fcl';
 import * as t from "@onflow/types";
 import { defer, Observable, ReplaySubject, Subject } from 'rxjs';
-import { filter, switchMap } from 'rxjs/operators';
+import { filter, switchMap, tap } from 'rxjs/operators';
 import { getAccountItems } from './flow/script.get-account-items';
 import { getInitializationState } from './flow/script.is-account-initialized';
+import { InitializeAccount } from './flow/tx.initialize-account';
 import { InitializationState, User } from './models';
 
 
@@ -13,8 +14,8 @@ import { InitializationState, User } from './models';
 })
 export class FlowService {
 
-  public user: Subject<User> = new ReplaySubject<User>(1);
-  public initializationState: Observable<InitializationState>;
+  public user = new ReplaySubject<User>(1);
+  public initializationState = new ReplaySubject<InitializationState>(1);
   public kittItems: Observable<number[]>;
 
   constructor() {
@@ -26,15 +27,19 @@ export class FlowService {
       this.user.next(x);
     });
 
-    this.initializationState = this.user.pipe(
+    this.user.pipe(
       filter(user => !!user.addr),
       switchMap(user => this.getInitializationState(user.addr)),
-    )
+    ).subscribe(this.initializationState)
 
     this.kittItems = this.user.pipe(
       filter(user => !!user.addr),
       switchMap(user => this.getAccountItems(user.addr))
     )
+  }
+
+  public refreshInitializationState(address: string): void {
+    this.getInitializationState(address).subscribe(this.initializationState);
   }
 
   public getInitializationState(address: string): Observable<InitializationState> {
@@ -43,6 +48,10 @@ export class FlowService {
 
   public getAccountItems(address: string): Observable<number[]> {
     return defer(() => getAccountItems(address))
+  }
+
+  public initializeAccount(address: string): Observable<any> {
+    return defer(() => InitializeAccount(address)).pipe(tap(_ => this.refreshInitializationState(address)))
   }
 }
 

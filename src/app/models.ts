@@ -7,5 +7,6 @@ export interface InitializationState {
     FUSD: boolean,
     KittyItems: boolean,
     KittyItemsMarket: boolean
+    address: string
   }
   
