@@ -5,7 +5,7 @@ import { defer, Observable, ReplaySubject, Subject } from 'rxjs';
 import { filter, switchMap, tap } from 'rxjs/operators';
 import { getAccountItems } from './flow/script.get-account-items';
 import { getInitializationState } from './flow/script.is-account-initialized';
-import { InitializeAccount } from './flow/tx.initialize-account';
+import { initializeAccount } from './flow/tx.initialize-account';
 import { InitializationState, User } from './models';
 
 
@@ -51,7 +51,7 @@ export class FlowService {
   }
 
   public initializeAccount(address: string): Observable<any> {
-    return defer(() => InitializeAccount(address)).pipe(tap(_ => this.refreshInitializationState(address)))
+    return defer(() => initializeAccount(address)).pipe(tap(_ => this.refreshInitializationState(address)))
   }
 }
 

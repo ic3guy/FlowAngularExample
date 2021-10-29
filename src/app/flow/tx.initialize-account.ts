@@ -1,7 +1,7 @@
 // prettier-ignore
 import * as fcl from '@onflow/fcl';
 
-export async function InitializeAccount(address: string) {
+export async function initializeAccount(address: string) {
 
     const transactionId = await fcl.mutate({
         cadence: `
