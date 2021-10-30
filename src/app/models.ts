@@ -1,6 +1,5 @@
 export interface User {
     addr: string
-    initializationState: InitializationState
   }
 
 export interface InitializationState {
