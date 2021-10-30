@@ -4,8 +4,7 @@ import { FlowService } from '../flow.service';
 
 @Component({
   selector: 'app-flow-auth',
-  templateUrl: './flow-auth.component.html',
-  styleUrls: ['./flow-auth.component.scss']
+  templateUrl: './flow-auth.component.html'
 })
 export class FlowAuthComponent implements OnInit {
 

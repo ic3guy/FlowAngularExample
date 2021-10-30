@@ -10,7 +10,8 @@ export const environment = {
   contractProfile: null,
   FUNGIBLE_TOKEN_ADDRESS: null,
   NON_FUNGIBLE_TOKEN_ADDRESS: null,
-  FUSD_TOKEN_ADDRESS: null
+  FUSD_TOKEN_ADDRESS: null,
+  KITTY_ITEMS_ADDRESS: null
 };
 
 /*

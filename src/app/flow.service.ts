@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as fcl from '@onflow/fcl';
-import * as t from "@onflow/types";
-import { defer, Observable, ReplaySubject, Subject } from 'rxjs';
+import { defer, Observable, ReplaySubject } from 'rxjs';
 import { filter, switchMap, tap } from 'rxjs/operators';
 import { getAccountItems } from './flow/script.get-account-items';
 import { getInitializationState } from './flow/script.is-account-initialized';
