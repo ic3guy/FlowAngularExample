@@ -19,11 +19,7 @@
     "lib": [
       "es2018",
       "dom"
-    ],
-    // "paths": {
-    //   "https": ["./node_modules/https-browserify"],
-    //   "http": ["./node_modules/stream-http"]
-    // }
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

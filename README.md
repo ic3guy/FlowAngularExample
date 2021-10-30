@@ -66,3 +66,10 @@ In `flow.service.ts` I've redirected `fcl.currentUser().subscribe()` to a Replay
 Furthermore, I've given examples of how the script and transaction calls can be transformed into observables. The RxJS `defer()` function only creates the observable when the wrapped function is subscribed to. This allows for consumption in components using async pipes quite easily and for use in observable pipelines.
 
 In `flow.service.spec.ts` rxjs marble testing is used to verify that user forwarding is consumed by the `getInitializationState()` Cadence script wrapper.
+
+# TODO
+
+- Angular being Typescript based really depends on types for third party libraries. Right now, a blanket definition is defined in `decs.d.ts` which just suppresses the type errors. It would be nice to have one written for the entire FCL.
+
+- Many projects have Angular native component wrappers, examples include ngx-bootstrap, ngx-monaco-editor etc. it might be worthwhile to provide Angular native component wrappers along the lines of what I've done in the Flow Service.
+
