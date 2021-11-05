@@ -6,6 +6,8 @@ import { FlowAuthComponent } from './flow-auth/flow-auth.component';
 import { FlowInitializationComponent } from './flow-initialization/flow-initialization.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     BrowserModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,7 +5,7 @@
         </button>
     </div>
     
-    <div *ngIf="user.addr">
+    <div class="logout" *ngIf="user.addr">
         {{ user.addr }}
 
         <button mat-raised-button color="primary" (click)="logOut()">

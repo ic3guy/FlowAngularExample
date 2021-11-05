@@ -1,14 +1,16 @@
 <div *ngIf="flow.user | async as user">
-    <div *ngIf="flow.initializationState | async as state">
-        <p>Has FUSD: {{ state.FUSD }}</p>
-        <p>Has Kitty Items: {{ state.KittyItems }}</p>
-        <p>Has Kitty Items Market: {{ state.KittyItemsMarket }}</p>
+    <div *ngIf="user.addr">
+        <div *ngIf="flow.initializationState | async as state">
+            <p>Has FUSD: {{ state.FUSD }}</p>
+            <p>Has Kitty Items: {{ state.KittyItems }}</p>
+            <p>Has Kitty Items Market: {{ state.KittyItemsMarket }}</p>
 
-        <div *ngIf="!state.FUSD || !state.KittyItems || !state.KittyItemsMarket">
-            Not intialized
-            <button (click)="initializeAccount(user.addr)">
-                Initialize Account
-            </button>
+            <div *ngIf="!state.FUSD || !state.KittyItems || !state.KittyItemsMarket">
+                Not intialized
+                <button (click)="initializeAccount(user.addr)">
+                    Initialize Account
+                </button>
+            </div>
         </div>
     </div>
 </div>
