@@ -1,6 +1,6 @@
 <div *ngIf="flowService.user | async as user">
     <div *ngIf="!user.addr">
-        <button (click)="logIn()">
+        <button mat-raised-button color="primary" (click)="logIn()">
             Log In
         </button>
     </div>
@@ -8,7 +8,7 @@
     <div *ngIf="user.addr">
         {{ user.addr }}
 
-        <button (click)="logOut()">
+        <button mat-raised-button color="primary" (click)="logOut()">
             Log Out
         </button>
     </div>
