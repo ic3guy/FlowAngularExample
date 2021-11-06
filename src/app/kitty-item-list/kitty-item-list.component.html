@@ -1,0 +1,14 @@
+<div *ngIf="flow.user | async as user">
+    <div *ngIf="user.addr">
+        <mat-card>
+            <mat-card-title>Kitty Item IDs</mat-card-title>
+            <mat-card-content>
+                <ul>
+                    <li *ngFor="let item of kittyItems | async">
+                        #{{ item }}
+                    </li>
+                </ul>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

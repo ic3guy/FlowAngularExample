@@ -4,13 +4,20 @@
             <mat-card>
                 <mat-card-title>Account Initialized?</mat-card-title>
                 <mat-card-content>
-                    <p>Has FUSD: {{ state.FUSD }}</p>
-                    <p>Has Kitty Items: {{ state.KittyItems }}</p>
-                    <p>Has Kitty Items Market: {{ state.KittyItemsMarket }}</p>
-
+                    <table>
+                        <tr>
+                            FUSD: <span *ngIf="state.FUSD;else other"><mat-icon>done</mat-icon></span>
+                        </tr>
+                        <tr>
+                            Kitty Items: <span *ngIf="state.KittyItems;else other"><mat-icon>done</mat-icon></span>
+                        </tr>
+                        <tr>
+                            Kitty Items Market: <span *ngIf="state.KittyItemsMarket;else other"><mat-icon>done</mat-icon></span>
+                        </tr>
+                    </table>
+                    <br />
                     <div *ngIf="!state.FUSD || !state.KittyItems || !state.KittyItemsMarket">
-                        Not intialized
-                        <button (click)="initializeAccount(user.addr)">
+                        <button mat-raised-button color="primary" (click)="initializeAccount(user.addr)">
                             Initialize Account
                         </button>
                     </div>
@@ -19,3 +26,5 @@
         </div>
     </div>
 </div>
+
+<ng-template #other><mat-icon>close</mat-icon></ng-template>
